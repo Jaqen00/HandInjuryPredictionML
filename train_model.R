@@ -221,15 +221,7 @@ fitControl <-
   )
 # 4.4 Random Forest
 rf_grid = expand.grid(mtry = c(1, 2, 3, 4, 5, 6, 7, 8, 9))
-RF_model <-
-  train(
-    fml,
-    data = train_data,
-    method = "rf",
-    trControl = fitControl,
-    metric = "ROC",
-    tuneGrid = rf_grid
-  )
+RF_model <- train( fml, data = train_data, method = "rf", trControl = fitControl, metric = "ROC", tuneGrid = rf_grid)
 RF_model$details <- custom_predict(RF_model)
 # 4.5 Naive Bayes
 nb_grid = expand.grid(
